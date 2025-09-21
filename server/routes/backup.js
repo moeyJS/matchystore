@@ -10,8 +10,12 @@ const router = express.Router();
 
 
 // Backup configuration
-const BACKUP_DIR = path.join(__dirname, '../backups');
-if (!fs.existsSync(BACKUP_DIR)) {
+const BACKUP_DIR = process.env.NODE_ENV === 'production' 
+  ? path.join(process.cwd(), 'tmp', 'backups')
+  : path.join(__dirname, '../backups');
+
+// Only create directory if not in production (Vercel handles this differently)
+if (process.env.NODE_ENV !== 'production' && !fs.existsSync(BACKUP_DIR)) {
   fs.mkdirSync(BACKUP_DIR, { recursive: true });
 }
 
@@ -32,6 +36,11 @@ router.post('/create', [
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const filename = `backup-${type}-${timestamp}.${format}`;
     const filepath = path.join(BACKUP_DIR, filename);
+
+    // Ensure backup directory exists
+    if (!fs.existsSync(BACKUP_DIR)) {
+      fs.mkdirSync(BACKUP_DIR, { recursive: true });
+    }
 
     let backupData;
 
@@ -62,6 +71,11 @@ router.post('/create', [
 // List backups
 router.get('/list', authenticateToken, requireAdmin, async (req, res) => {
   try {
+    // Check if backup directory exists
+    if (!fs.existsSync(BACKUP_DIR)) {
+      return res.json({ backups: [] });
+    }
+
     const files = fs.readdirSync(BACKUP_DIR)
       .filter(file => file.startsWith('backup-') && (file.endsWith('.json') || file.endsWith('.sql')))
       .map(file => {
@@ -552,6 +566,11 @@ function scheduleBackup(frequency, time, format, type) {
 
 async function cleanupOldBackups() {
   try {
+    // Check if backup directory exists
+    if (!fs.existsSync(BACKUP_DIR)) {
+      return;
+    }
+
     const settings = await prisma.setting.findMany({
       where: { category: 'backup' }
     });
