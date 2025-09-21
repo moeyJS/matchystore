@@ -251,9 +251,20 @@ npm run preview      # Preview production build
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Set environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
+1. **Connect Repository**: Go to [Vercel](https://vercel.com) and import your GitHub repository
+2. **Configure Build Settings**:
+   - Framework Preset: `Other`
+   - Build Command: `npm run build`
+   - Output Directory: `client/dist`
+   - Install Command: `npm install`
+3. **Set Environment Variables** in Vercel dashboard:
+   ```
+   DATABASE_URL=your_postgresql_connection_string
+   JWT_SECRET=your_jwt_secret
+   JWT_REFRESH_SECRET=your_refresh_secret
+   NODE_ENV=production
+   ```
+4. **Deploy**: Vercel will automatically deploy on every push to main branch
 
 ### Netlify
 1. Build the frontend: `cd client && npm run build`
