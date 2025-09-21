@@ -9,14 +9,14 @@
       }
     },
     {
-      "src": "server/index.js",
+      "src": "server/test.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/server/index.js"
+      "dest": "/server/test.js"
     },
     {
       "src": "/(.*)",
@@ -25,5 +25,6 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  }
+  },
+  "buildCommand": "cd server && npx prisma generate && cd ../client && npm run build"
 }
