@@ -9,7 +9,7 @@ const cron = require('node-cron');
 const router = express.Router();
 
 
-// Backup configuration
+// Backup configuration - Fixed for Vercel serverless
 const BACKUP_DIR = process.env.NODE_ENV === 'production' 
   ? path.join(process.cwd(), 'tmp', 'backups')
   : path.join(__dirname, '../backups');

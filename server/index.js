@@ -30,7 +30,8 @@ const staffRoutes = require('./routes/staff');
 const bannersRoutes = require('./routes/banners');
 const footerRoutes = require('./routes/footer');
 const reportsRoutes = require('./routes/reports');
-const backupRoutes = require('./routes/backup');
+// Lazy load backup routes to avoid directory creation issues in Vercel
+// const backupRoutes = require('./routes/backup');
 
 const prisma = require('./lib/prisma');
 
@@ -111,7 +112,11 @@ app.use('/api/admin/staff', staffRoutes);
 app.use('/api/banners', bannersRoutes);
 app.use('/api/footer', footerRoutes);
 app.use('/api/admin/reports', reportsRoutes);
-app.use('/api/admin/backup', backupRoutes);
+// Only load backup routes in development or when explicitly needed
+if (process.env.NODE_ENV !== 'production') {
+  const backupRoutes = require('./routes/backup');
+  app.use('/api/admin/backup', backupRoutes);
+}
 
 // Health check
 app.get('/api/health', (req, res) => {
