@@ -33,7 +33,15 @@ const reportsRoutes = require('./routes/reports');
 // Lazy load backup routes to avoid directory creation issues in Vercel
 // const backupRoutes = require('./routes/backup');
 
-const prisma = require('./lib/prisma');
+// Initialize Prisma with error handling
+let prisma;
+try {
+  prisma = require('./lib/prisma');
+  console.log('✅ Prisma client initialized successfully');
+} catch (error) {
+  console.error('❌ Failed to initialize Prisma client:', error);
+  process.exit(1);
+}
 
 const app = express();
 const server = createServer(app);
@@ -120,7 +128,12 @@ if (process.env.NODE_ENV !== 'production') {
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+  res.json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV,
+    hasDatabaseUrl: !!process.env.DATABASE_URL
+  });
 });
 
 // Socket.io for real-time features
