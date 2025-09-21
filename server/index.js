@@ -232,20 +232,28 @@ app.use('*', (req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-const PORT = process.env.PORT || 3001;
-
-server.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📱 Client URL: ${process.env.CLIENT_URL || 'http://localhost:5173'}`);
-});
-
-// Graceful shutdown
-process.on('SIGTERM', async () => {
-  console.log('SIGTERM received, shutting down gracefully');
-  await prisma.$disconnect();
-  server.close(() => {
-    console.log('Process terminated');
+// For Vercel serverless functions, export the app directly
+// For local development, start the server
+if (process.env.NODE_ENV === 'production') {
+  // Vercel serverless - just export the app
+  module.exports = app;
+} else {
+  // Local development - start the server
+  const PORT = process.env.PORT || 3001;
+  
+  server.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📱 Client URL: ${process.env.CLIENT_URL || 'http://localhost:5173'}`);
   });
-});
 
-module.exports = { app, io, prisma };
+  // Graceful shutdown
+  process.on('SIGTERM', async () => {
+    console.log('SIGTERM received, shutting down gracefully');
+    await prisma.$disconnect();
+    server.close(() => {
+      console.log('Process terminated');
+    });
+  });
+  
+  module.exports = { app, io, prisma };
+}
