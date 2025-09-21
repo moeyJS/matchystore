@@ -11,9 +11,12 @@ async function main() {
   
   const superAdmin = await prisma.user.upsert({
     where: { email: 'admin@matchystore.com' },
-    update: {},
+    update: {
+      username: 'admin'
+    },
     create: {
       email: 'admin@matchystore.com',
+      username: 'admin',
       password: hashedPassword,
       name: 'Super Admin',
       role: 'SUPER_ADMIN'
@@ -226,9 +229,12 @@ async function main() {
   const customerPassword = await bcrypt.hash('customer123', 12);
   const customer = await prisma.user.upsert({
     where: { email: 'customer@example.com' },
-    update: {},
+    update: {
+      username: 'customer'
+    },
     create: {
       email: 'customer@example.com',
+      username: 'customer',
       password: customerPassword,
       name: 'John Doe',
       phone: '+9641234567890',

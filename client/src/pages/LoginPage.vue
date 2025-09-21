@@ -93,14 +93,14 @@
           </div>
         </div>
 
-        <!-- Demo Credentials -->
+        <!-- Demo Credentials
         <div class="mt-6 p-4 bg-muted/50 rounded-md">
           <h3 class="text-sm font-medium mb-2">Demo Credentials:</h3>
           <div class="text-xs text-muted-foreground space-y-1">
             <p><strong>Admin:</strong> admin / admin123</p>
             <p><strong>Customer:</strong> customer / customer123</p>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <!-- Sign Up Link -->
