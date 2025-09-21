@@ -7,12 +7,13 @@
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
     "server:dev": "cd server && npm run dev",
     "client:dev": "cd client && npm run dev",
-    "build": "cd client && npm run build",
+    "build": "npm run db:generate && cd client && npm run build",
     "start": "cd server && npm start",
     "db:generate": "cd server && npx prisma generate",
     "db:push": "cd server && npx prisma db push",
     "db:studio": "cd server && npx prisma studio",
-    "db:seed": "cd server && node prisma/seed.js"
+    "db:seed": "cd server && node prisma/seed.js",
+    "vercel-build": "cd server && npx prisma generate && cd ../client && npm run build"
   },
   "keywords": ["socks", "cms", "ecommerce", "vue", "nodejs"],
   "author": "MatchyStore Team",

@@ -132,7 +132,8 @@ app.get('/api/health', (req, res) => {
     status: 'OK', 
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV,
-    hasDatabaseUrl: !!process.env.DATABASE_URL
+    hasDatabaseUrl: !!process.env.DATABASE_URL,
+    message: 'Store CMS API is running'
   });
 });
 
