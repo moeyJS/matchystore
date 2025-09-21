@@ -44,6 +44,10 @@ try {
 }
 
 const app = express();
+
+// Trust proxy for Vercel serverless environment
+app.set('trust proxy', 1);
+
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
