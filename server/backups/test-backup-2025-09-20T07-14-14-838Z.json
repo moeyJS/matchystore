@@ -1,0 +1,795 @@
+{
+  "metadata": {
+    "type": "full",
+    "createdAt": "2025-09-20T07:14:14.838Z",
+    "version": "1.0"
+  },
+  "data": {
+    "user": [
+      {
+        "id": "cmfmv4w9c0000op78r82s5kvc",
+        "username": "admin",
+        "email": "admin@matchystore.com",
+        "phone": null,
+        "name": "Admin User",
+        "password": "$2a$10$Szlv10kytssf.5BkI94ze.DvC5Wzh8vCvwvIXUo.JdXZCLzlmbsUS",
+        "role": "SUPER_ADMIN",
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.552Z",
+        "updatedAt": "2025-09-20T04:41:10.282Z"
+      },
+      {
+        "id": "cmfmv4wge000wop78wc5psvu7",
+        "username": "customer",
+        "email": "customer@example.com",
+        "phone": "+9641234567890",
+        "name": "Customer User",
+        "password": "$2a$10$Ema1cA8UjReriXU0qJnaQe5Ou5pENVILjguBKwrZOmCp6MIoI2j..",
+        "role": "CUSTOMER",
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.806Z",
+        "updatedAt": "2025-09-20T04:41:10.396Z"
+      },
+      {
+        "id": "cmfrs6mnp0000xqgoqhqlnnf6",
+        "username": "staff",
+        "email": "staff@matchystore.com",
+        "phone": null,
+        "name": "Staff User",
+        "password": "$2a$10$1T4IURJPg.TZh6IagE4Ev.A07fXrLvbkdLIKBGP3mv06h5J5Z5fKS",
+        "role": "CUSTOMER_SERVICE",
+        "isActive": true,
+        "createdAt": "2025-09-20T04:41:10.453Z",
+        "updatedAt": "2025-09-20T04:41:10.453Z"
+      },
+      {
+        "id": "cmfrsv2ql0004tf17rik0dpih",
+        "username": "aliqasim",
+        "email": null,
+        "phone": null,
+        "name": "Ali Qasim",
+        "password": "$2a$10$Vj6wmKwUfNCLwLasMp8wkOKZIZCulv5jUvz8AmH20whLO6BpImBGa",
+        "role": "SUPER_ADMIN",
+        "isActive": true,
+        "createdAt": "2025-09-20T05:00:11.038Z",
+        "updatedAt": "2025-09-20T05:00:11.038Z"
+      }
+    ],
+    "product": [
+      {
+        "id": "cmfmv4wa5000bop78koamv455",
+        "name": "Nike Elite Basketball Socks",
+        "description": "High-performance basketball socks with extra cushioning and arch support.",
+        "price": "18.99",
+        "sku": "NKE-ATH-002",
+        "barcode": null,
+        "stock": 50,
+        "images": [
+          "https://via.placeholder.com/400x400/4F46E5/FFFFFF?text=Nike+Elite",
+          "https://via.placeholder.com/400x400/4F46E5/FFFFFF?text=Basketball+Style"
+        ],
+        "colors": [],
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-20T05:02:30.523Z",
+        "brandId": "cmfmv4w9y0003op7864j5r3p1",
+        "categoryId": "cmfmv4wa10005op780cokvu7p"
+      },
+      {
+        "id": "cmfmv4wa5000cop7807tkr78g",
+        "name": "Nike Dri-FIT Crew Socks",
+        "description": "Moisture-wicking athletic socks with cushioned sole for maximum comfort during workouts.",
+        "price": "12.99",
+        "sku": "NKE-ATH-001",
+        "barcode": null,
+        "stock": 50,
+        "images": [
+          "https://via.placeholder.com/400x400/4F46E5/FFFFFF?text=Nike+Dri-FIT",
+          "https://via.placeholder.com/400x400/4F46E5/FFFFFF?text=Side+View"
+        ],
+        "colors": [],
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z",
+        "brandId": "cmfmv4w9y0003op7864j5r3p1",
+        "categoryId": "cmfmv4wa10005op780cokvu7p"
+      },
+      {
+        "id": "cmfmv4wa5000aop78ksq9ssm3",
+        "name": "Puma Classic Dress Socks",
+        "description": "Elegant dress socks made from fine cotton blend. Perfect for formal occasions.",
+        "price": "15.99",
+        "sku": "PUM-DRS-001",
+        "barcode": null,
+        "stock": 30,
+        "images": [
+          "https://via.placeholder.com/400x400/7C3AED/FFFFFF?text=Puma+Dress",
+          "https://via.placeholder.com/400x400/7C3AED/FFFFFF?text=Formal+Style"
+        ],
+        "colors": [],
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z",
+        "brandId": "cmfmv4w9v0002op78p9f9bf43",
+        "categoryId": "cmfmv4wa10004op78quqkp6zb"
+      },
+      {
+        "id": "cmfmv4wae000nop78dugcvi8v",
+        "name": "Adidas Originals 3-Stripe Socks",
+        "description": "Classic casual socks with iconic 3-stripe design. Perfect for everyday wear.",
+        "price": "8.99",
+        "sku": "ADI-CAS-001",
+        "barcode": null,
+        "stock": 75,
+        "images": [
+          "https://via.placeholder.com/400x400/10B981/FFFFFF?text=Adidas+3-Stripe",
+          "https://via.placeholder.com/400x400/10B981/FFFFFF?text=Detail+View"
+        ],
+        "colors": [],
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z",
+        "brandId": "cmfmv4w9j0001op781wl1mu6t",
+        "categoryId": "cmfmv4wa10006op785zwi4tbg"
+      },
+      {
+        "id": "cmfmv4wae000sop78cft8eh5v",
+        "name": "Adidas Comfort Crew Socks",
+        "description": "Ultra-comfortable crew socks with soft cotton blend and reinforced heel and toe.",
+        "price": "6.99",
+        "sku": "ADI-CAS-002",
+        "barcode": null,
+        "stock": 100,
+        "images": [
+          "https://via.placeholder.com/400x400/10B981/FFFFFF?text=Adidas+Comfort",
+          "https://via.placeholder.com/400x400/10B981/FFFFFF?text=Comfort+Style"
+        ],
+        "colors": [],
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z",
+        "brandId": "cmfmv4w9j0001op781wl1mu6t",
+        "categoryId": "cmfmv4wa10006op785zwi4tbg"
+      },
+      {
+        "id": "cmfrx12xv0008tf17mf0n7tj0",
+        "name": "Matchy Coffee & Books Socks",
+        "description": "",
+        "price": "3000",
+        "sku": "MTCH922",
+        "barcode": null,
+        "stock": 1000,
+        "images": [],
+        "colors": [],
+        "isActive": true,
+        "createdAt": "2025-09-20T06:56:49.699Z",
+        "updatedAt": "2025-09-20T06:56:49.699Z",
+        "brandId": "cmfmv4w9j0001op781wl1mu6t",
+        "categoryId": "cmfmv4wa10005op780cokvu7p"
+      }
+    ],
+    "category": [
+      {
+        "id": "cmfmv4wa10005op780cokvu7p",
+        "name": "Athletic Socks",
+        "description": "High-performance socks for sports and exercise",
+        "image": "https://via.placeholder.com/300x200/4F46E5/FFFFFF?text=Athletic",
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.577Z",
+        "updatedAt": "2025-09-16T18:04:57.577Z"
+      },
+      {
+        "id": "cmfmv4wa10004op78quqkp6zb",
+        "name": "Dress Socks",
+        "description": "Formal socks for business and special occasions",
+        "image": "https://via.placeholder.com/300x200/7C3AED/FFFFFF?text=Dress",
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.578Z",
+        "updatedAt": "2025-09-16T18:04:57.578Z"
+      },
+      {
+        "id": "cmfmv4wa10006op785zwi4tbg",
+        "name": "Casual Socks",
+        "description": "Comfortable everyday socks for daily wear",
+        "image": "https://via.placeholder.com/300x200/10B981/FFFFFF?text=Casual",
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.577Z",
+        "updatedAt": "2025-09-16T18:04:57.577Z"
+      }
+    ],
+    "brand": [
+      {
+        "id": "cmfmv4w9j0001op781wl1mu6t",
+        "name": "Adidas",
+        "description": null,
+        "logo": "https://via.placeholder.com/100x50/000000/FFFFFF?text=Adidas",
+        "website": null,
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.560Z",
+        "updatedAt": "2025-09-16T18:04:57.560Z"
+      },
+      {
+        "id": "cmfmv4w9v0002op78p9f9bf43",
+        "name": "Puma",
+        "description": null,
+        "logo": "https://via.placeholder.com/100x50/000000/FFFFFF?text=Puma",
+        "website": null,
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.560Z",
+        "updatedAt": "2025-09-16T18:04:57.560Z"
+      },
+      {
+        "id": "cmfmv4w9y0003op7864j5r3p1",
+        "name": "Nike",
+        "description": null,
+        "logo": "https://via.placeholder.com/100x50/000000/FFFFFF?text=Nike",
+        "website": null,
+        "isActive": true,
+        "createdAt": "2025-09-16T18:04:57.560Z",
+        "updatedAt": "2025-09-16T18:04:57.560Z"
+      }
+    ],
+    "order": [],
+    "orderItem": [],
+    "cartItem": [
+      {
+        "id": "cmfr3f9v30003osfbgahtdv9d",
+        "quantity": 1,
+        "userId": "cmfmv4w9c0000op78r82s5kvc",
+        "productId": "cmfmv4wa5000cop7807tkr78g",
+        "createdAt": "2025-09-19T17:08:03.376Z",
+        "updatedAt": "2025-09-19T17:08:03.376Z"
+      }
+    ],
+    "supportTicket": [],
+    "supportMessage": [],
+    "posSession": [],
+    "blogPost": [],
+    "fileUpload": [],
+    "affiliateUser": [],
+    "page": [
+      {
+        "id": "cmfmvsqby0000j9os3qgqgs90",
+        "title": "test",
+        "slug": "test",
+        "content": "<h1>hello test</h1>",
+        "seoTitle": "test",
+        "seoDescription": "testssss",
+        "status": "PUBLISHED",
+        "publishedAt": null,
+        "createdAt": "2025-09-16T18:23:29.614Z",
+        "updatedAt": "2025-09-16T18:23:29.614Z"
+      }
+    ],
+    "setting": [
+      {
+        "id": "cmfnrmvwf0004tsmllzfvu2es",
+        "category": "localization",
+        "key": "defaultLocale",
+        "value": "en",
+        "createdAt": "2025-09-17T09:14:44.607Z",
+        "updatedAt": "2025-09-17T09:14:44.607Z"
+      },
+      {
+        "id": "cmfnrmvwf0005tsmld5wm1aib",
+        "category": "localization",
+        "key": "supportedLocales",
+        "value": "[\"en\"]",
+        "createdAt": "2025-09-17T09:14:44.607Z",
+        "updatedAt": "2025-09-17T09:14:44.607Z"
+      },
+      {
+        "id": "cmfnrmvwf0006tsmlt8ueag8y",
+        "category": "localization",
+        "key": "currency",
+        "value": "IQD",
+        "createdAt": "2025-09-17T09:14:44.607Z",
+        "updatedAt": "2025-09-17T09:14:44.607Z"
+      },
+      {
+        "id": "cmfnrmvwf0007tsmlfbr10wel",
+        "category": "localization",
+        "key": "currencyFormat",
+        "value": "en-US",
+        "createdAt": "2025-09-17T09:14:44.607Z",
+        "updatedAt": "2025-09-17T09:14:44.607Z"
+      },
+      {
+        "id": "cmfnrk3yr0001tsmlan9560ih",
+        "category": "system",
+        "key": "cacheEnabled",
+        "value": "true",
+        "createdAt": "2025-09-17T09:12:35.090Z",
+        "updatedAt": "2025-09-19T15:53:04.402Z"
+      },
+      {
+        "id": "cmfnrk3yq0000tsmljwhz7h5i",
+        "category": "system",
+        "key": "maintenanceMode",
+        "value": "false",
+        "createdAt": "2025-09-17T09:12:35.090Z",
+        "updatedAt": "2025-09-19T16:01:11.766Z"
+      },
+      {
+        "id": "cmfrsf6b70000tf171s75002g",
+        "category": "general",
+        "key": "storeName",
+        "value": "Matchy",
+        "createdAt": "2025-09-20T04:47:49.171Z",
+        "updatedAt": "2025-09-20T04:47:49.171Z"
+      },
+      {
+        "id": "cmfrsf6b70001tf17lktlzmc4",
+        "category": "general",
+        "key": "storeEmail",
+        "value": "admin@matchystore.com",
+        "createdAt": "2025-09-20T04:47:49.171Z",
+        "updatedAt": "2025-09-20T04:47:49.171Z"
+      },
+      {
+        "id": "cmfrsf6b70002tf17febw88uy",
+        "category": "general",
+        "key": "phone",
+        "value": "+1 (555) 123-4567",
+        "createdAt": "2025-09-20T04:47:49.171Z",
+        "updatedAt": "2025-09-20T04:47:49.171Z"
+      },
+      {
+        "id": "cmfrsf6b70003tf17rx3oerjw",
+        "category": "general",
+        "key": "address",
+        "value": "123 Main Street, City, State 12345",
+        "createdAt": "2025-09-20T04:47:49.171Z",
+        "updatedAt": "2025-09-20T04:47:49.171Z"
+      },
+      {
+        "id": "cmfrsyk3r0005tf17o6ycl9sa",
+        "category": "appearance",
+        "key": "primaryColor",
+        "value": "#4e6a97",
+        "createdAt": "2025-09-20T05:02:53.511Z",
+        "updatedAt": "2025-09-20T05:02:53.511Z"
+      },
+      {
+        "id": "cmfrsyk3r0006tf17abrsmcfl",
+        "category": "appearance",
+        "key": "secondaryColor",
+        "value": "#1e40af",
+        "createdAt": "2025-09-20T05:02:53.511Z",
+        "updatedAt": "2025-09-20T05:02:53.511Z"
+      },
+      {
+        "id": "cmfrxaegr0000rt4dohoyczfy",
+        "category": "backup",
+        "key": "autoBackup",
+        "value": "true",
+        "createdAt": "2025-09-20T07:04:04.539Z",
+        "updatedAt": "2025-09-20T07:05:40.313Z"
+      },
+      {
+        "id": "cmfrxaegw0001rt4ddsq5v3dd",
+        "category": "backup",
+        "key": "frequency",
+        "value": "\"daily\"",
+        "createdAt": "2025-09-20T07:04:04.544Z",
+        "updatedAt": "2025-09-20T07:05:40.315Z"
+      },
+      {
+        "id": "cmfrxaegw0002rt4dstzvah7u",
+        "category": "backup",
+        "key": "time",
+        "value": "\"10:06\"",
+        "createdAt": "2025-09-20T07:04:04.545Z",
+        "updatedAt": "2025-09-20T07:05:40.316Z"
+      },
+      {
+        "id": "cmfrxaegx0003rt4d3jvzlhpt",
+        "category": "backup",
+        "key": "format",
+        "value": "\"sql\"",
+        "createdAt": "2025-09-20T07:04:04.546Z",
+        "updatedAt": "2025-09-20T07:05:40.317Z"
+      },
+      {
+        "id": "cmfrxaegy0004rt4dmz84rwpf",
+        "category": "backup",
+        "key": "type",
+        "value": "\"full\"",
+        "createdAt": "2025-09-20T07:04:04.546Z",
+        "updatedAt": "2025-09-20T07:05:40.317Z"
+      },
+      {
+        "id": "cmfrxaegz0005rt4dzju77nc5",
+        "category": "backup",
+        "key": "retention",
+        "value": "30",
+        "createdAt": "2025-09-20T07:04:04.547Z",
+        "updatedAt": "2025-09-20T07:05:40.318Z"
+      }
+    ],
+    "banner": [
+      {
+        "id": "cmfr31t7k0000rptg4phl1p1v",
+        "title": "20% OFF ONLY TODAY AND GET SPECIAL GIFT!",
+        "description": "Today only, enjoy a stylish 20% off and receive an exclusive gift! Elevate your wardrobe now!",
+        "imageUrl": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
+        "ctaText": "Shop Now",
+        "ctaUrl": "/products",
+        "isActive": true,
+        "order": 0,
+        "createdAt": "2025-09-19T16:57:35.264Z",
+        "updatedAt": "2025-09-19T16:57:35.264Z"
+      },
+      {
+        "id": "cmfr31t7w0001rptg6c74wrlg",
+        "title": "NEW COLLECTION IS HERE!",
+        "description": "Discover our latest fashion collection with trendy designs and premium quality materials.",
+        "imageUrl": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&h=600&fit=crop",
+        "ctaText": "Explore Collection",
+        "ctaUrl": "/products",
+        "isActive": true,
+        "order": 1,
+        "createdAt": "2025-09-19T16:57:35.264Z",
+        "updatedAt": "2025-09-19T16:57:35.264Z"
+      },
+      {
+        "id": "cmfr31t7z0002rptgzomeo2xz",
+        "title": "FREE SHIPPING ON ALL ORDERS",
+        "description": "No minimum purchase required. Get your favorite items delivered right to your doorstep for free!",
+        "imageUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+        "ctaText": "Start Shopping",
+        "ctaUrl": "/products",
+        "isActive": true,
+        "order": 2,
+        "createdAt": "2025-09-19T16:57:35.264Z",
+        "updatedAt": "2025-09-19T16:57:35.264Z"
+      }
+    ],
+    "footerSection": [
+      {
+        "id": "cmfr31t820004rptgao3rv0km",
+        "title": "PRODUCTS",
+        "isActive": false,
+        "order": 1,
+        "createdAt": "2025-09-19T16:57:35.283Z",
+        "updatedAt": "2025-09-19T17:03:46.421Z"
+      },
+      {
+        "id": "cmfr31t820005rptgsqm3gbys",
+        "title": "CUSTOMER SERVICE",
+        "isActive": false,
+        "order": 2,
+        "createdAt": "2025-09-19T16:57:35.283Z",
+        "updatedAt": "2025-09-19T17:03:57.912Z"
+      },
+      {
+        "id": "cmfr31t830006rptg7xyd6vth",
+        "title": "SOCIAL MEDIA",
+        "isActive": false,
+        "order": 3,
+        "createdAt": "2025-09-19T16:57:35.283Z",
+        "updatedAt": "2025-09-19T17:04:06.437Z"
+      },
+      {
+        "id": "cmfr31t810003rptge1njxmll",
+        "title": "GENERAL",
+        "isActive": false,
+        "order": 0,
+        "createdAt": "2025-09-19T16:57:35.281Z",
+        "updatedAt": "2025-09-19T17:09:46.324Z"
+      }
+    ],
+    "footerLink": [
+      {
+        "id": "cmfr31t84000crptgixwomd38",
+        "text": "How it Works",
+        "url": "/how-it-works",
+        "isActive": true,
+        "order": 2,
+        "sectionId": "cmfr31t810003rptge1njxmll",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t84000brptgodvxalkx",
+        "text": "Blog",
+        "url": "/blog",
+        "isActive": true,
+        "order": 1,
+        "sectionId": "cmfr31t810003rptge1njxmll",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t84000arptgxwd8bxpp",
+        "text": "About Us",
+        "url": "/about",
+        "isActive": true,
+        "order": 0,
+        "sectionId": "cmfr31t810003rptge1njxmll",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t8m000erptgl6jll5sb",
+        "text": "Accessories",
+        "url": "/products?category=accessories",
+        "isActive": true,
+        "order": 3,
+        "sectionId": "cmfr31t820004rptgao3rv0km",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t8r000grptgpo2nkveh",
+        "text": "FAQ",
+        "url": "/faq",
+        "isActive": true,
+        "order": 0,
+        "sectionId": "cmfr31t820005rptgsqm3gbys",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t8s000irptgzargzlcj",
+        "text": "Man Fashion",
+        "url": "/products?category=men",
+        "isActive": true,
+        "order": 0,
+        "sectionId": "cmfr31t820004rptgao3rv0km",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t8u000krptg2neg1vff",
+        "text": "Woman Fashion",
+        "url": "/products?category=women",
+        "isActive": true,
+        "order": 1,
+        "sectionId": "cmfr31t820004rptgao3rv0km",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t8v000mrptgf95r41n7",
+        "text": "Billing Cycle",
+        "url": "/billing",
+        "isActive": true,
+        "order": 2,
+        "sectionId": "cmfr31t820005rptgsqm3gbys",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t8v000qrptgwhj87bkq",
+        "text": "Privacy Policy",
+        "url": "/privacy",
+        "isActive": true,
+        "order": 3,
+        "sectionId": "cmfr31t820005rptgsqm3gbys",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t8v000orptgm8hykinv",
+        "text": "Contact Us",
+        "url": "/contact",
+        "isActive": true,
+        "order": 3,
+        "sectionId": "cmfr31t810003rptge1njxmll",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t8w000srptglldem0cc",
+        "text": "Shoes & Bag",
+        "url": "/products?category=shoes",
+        "isActive": true,
+        "order": 2,
+        "sectionId": "cmfr31t820004rptgao3rv0km",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      },
+      {
+        "id": "cmfr31t8w000urptgxuzfghc9",
+        "text": "Help & Support",
+        "url": "/support",
+        "isActive": true,
+        "order": 1,
+        "sectionId": "cmfr31t820005rptgsqm3gbys",
+        "createdAt": "2025-09-19T16:57:35.284Z",
+        "updatedAt": "2025-09-19T16:57:35.284Z"
+      }
+    ],
+    "socialLink": [
+      {
+        "id": "cmfr31t8y000wrptgej8f6cqi",
+        "platform": "facebook",
+        "url": "https://facebook.com/matchystore",
+        "icon": "<svg class=\"w-6 h-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z\"/></svg>",
+        "isActive": false,
+        "order": 1,
+        "createdAt": "2025-09-19T16:57:35.314Z",
+        "updatedAt": "2025-09-20T04:46:09.325Z"
+      },
+      {
+        "id": "cmfr31t8y000xrptgws6k6tn1",
+        "platform": "instagram",
+        "url": "https://instagram.com/matchystore",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg",
+        "isActive": true,
+        "order": 0,
+        "createdAt": "2025-09-19T16:57:35.314Z",
+        "updatedAt": "2025-09-20T04:47:20.131Z"
+      },
+      {
+        "id": "cmfr31t8y000vrptgn5lag7yu",
+        "platform": "twitter",
+        "url": "https://twitter.com/matchystore",
+        "icon": "<svg class=\"w-6 h-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z\"/></svg>",
+        "isActive": false,
+        "order": 2,
+        "createdAt": "2025-09-19T16:57:35.314Z",
+        "updatedAt": "2025-09-20T04:46:05.568Z"
+      },
+      {
+        "id": "cmfr31t8y000yrptg7zvp2pow",
+        "platform": "youtube",
+        "url": "https://youtube.com/matchystore",
+        "icon": "<svg class=\"w-6 h-6\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z\"/></svg>",
+        "isActive": false,
+        "order": 3,
+        "createdAt": "2025-09-19T16:57:35.314Z",
+        "updatedAt": "2025-09-20T04:46:10.121Z"
+      }
+    ],
+    "productAttribute": [
+      {
+        "id": "cmfmv4wa5000gop78gdamrj9o",
+        "name": "Size",
+        "value": "M",
+        "productId": "cmfmv4wa5000cop7807tkr78g",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wa5000dop786r09gv20",
+        "name": "Size",
+        "value": "M",
+        "productId": "cmfmv4wa5000aop78ksq9ssm3",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wa5000eop784lv0ikwq",
+        "name": "Color",
+        "value": "Navy",
+        "productId": "cmfmv4wa5000aop78ksq9ssm3",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wa5000iop78txwpo62d",
+        "name": "Color",
+        "value": "White",
+        "productId": "cmfmv4wa5000cop7807tkr78g",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wa5000fop78kzhgzsss",
+        "name": "Material",
+        "value": "Cotton, Elastane",
+        "productId": "cmfmv4wa5000aop78ksq9ssm3",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wa5000kop78gee5sqy7",
+        "name": "Material",
+        "value": "Polyester, Nylon",
+        "productId": "cmfmv4wa5000cop7807tkr78g",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wa5000hop78qy3a1jx0",
+        "name": "Size",
+        "value": "L",
+        "productId": "cmfmv4wa5000bop78koamv455",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wa5000jop78d918b8rs",
+        "name": "Color",
+        "value": "Black/White",
+        "productId": "cmfmv4wa5000bop78koamv455",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wa5000lop78ff28wctw",
+        "name": "Material",
+        "value": "Dri-FIT Technology",
+        "productId": "cmfmv4wa5000bop78koamv455",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wae000top78mipkrht9",
+        "name": "Size",
+        "value": "S",
+        "productId": "cmfmv4wae000sop78cft8eh5v",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wae000uop78t5jakb3b",
+        "name": "Color",
+        "value": "Gray",
+        "productId": "cmfmv4wae000sop78cft8eh5v",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wae000vop78fk2dha0m",
+        "name": "Material",
+        "value": "Cotton, Spandex",
+        "productId": "cmfmv4wae000sop78cft8eh5v",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wae000oop78dplj3ivi",
+        "name": "Size",
+        "value": "L",
+        "productId": "cmfmv4wae000nop78dugcvi8v",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wae000pop78dfs5610e",
+        "name": "Color",
+        "value": "Black",
+        "productId": "cmfmv4wae000nop78dugcvi8v",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      },
+      {
+        "id": "cmfmv4wae000qop78p3dj02q3",
+        "name": "Material",
+        "value": "Cotton, Polyester",
+        "productId": "cmfmv4wae000nop78dugcvi8v",
+        "createdAt": "2025-09-16T18:04:57.581Z",
+        "updatedAt": "2025-09-16T18:04:57.581Z"
+      }
+    ]
+  },
+  "schema": {
+    "version": "1.0",
+    "tables": [
+      "user",
+      "product",
+      "category",
+      "brand",
+      "order",
+      "orderItem",
+      "cartItem",
+      "supportTicket",
+      "supportMessage",
+      "posSession",
+      "blogPost",
+      "fileUpload",
+      "affiliateUser",
+      "page",
+      "setting",
+      "banner",
+      "footerSection",
+      "footerLink",
+      "socialLink",
+      "productAttribute"
+    ],
+    "prismaVersion": "5.0.0"
+  }
+}

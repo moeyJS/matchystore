@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: matchystore_db
+    environment:
+      POSTGRES_DB: matchystorecms
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: toor
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - matchystore_network
+
+  # Backend API
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: matchystore_backend
+    environment:
+      DATABASE_URL: postgresql://postgres:toor@postgres:5432/matchystorecms?schema=public
+      JWT_SECRET: your-super-secret-jwt-key-here
+      JWT_REFRESH_SECRET: your-super-secret-refresh-key-here
+      PORT: 3001
+      CLIENT_URL: http://localhost:5173
+      NODE_ENV: production
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+    networks:
+      - matchystore_network
+    volumes:
+      - ./server/uploads:/app/uploads
+
+  # Frontend
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: matchystore_frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - matchystore_network
+
+volumes:
+  postgres_data:
+
+networks:
+  matchystore_network:
+    driver: bridge
+
+
+
+
+
+
+
+

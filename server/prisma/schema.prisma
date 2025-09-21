@@ -1,0 +1,570 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String?  @unique
+  email     String?  @unique
+  phone     String?  @unique
+  name      String?
+  password  String
+  role      Role     @default(CUSTOMER)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  orders    Order[]
+  cartItems CartItem[]
+  supportTickets SupportTicket[]
+  supportMessages SupportMessage[]
+  posSessions POSSession[]
+  blogPosts BlogPost[]
+  fileUploads FileUpload[]
+  affiliateUser AffiliateUser?
+
+  @@map("users")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Decimal  @db.Decimal(10, 2)
+  sku         String?  @unique
+  barcode     String?  @unique
+  stock       Int      @default(0)
+  images      String[]
+  colors      String[]
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  brandId     String?
+  brand       Brand?   @relation(fields: [brandId], references: [id])
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id])
+  attributes  ProductAttribute[]
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
+
+  @@map("products")
+}
+
+model Brand {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  logo        String?
+  website     String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  products    Product[]
+
+  @@map("brands")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  image       String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  products    Product[]
+  subcategories SubCategory[]
+
+  @@map("categories")
+}
+
+model SubCategory {
+  id         String   @id @default(cuid())
+  name       String
+  categoryId String
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@map("subcategories")
+}
+
+model ProductAttribute {
+  id        String   @id @default(cuid())
+  name      String
+  value     String
+  productId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  product   Product  @relation(fields: [productId], references: [id])
+
+  @@map("product_attributes")
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  quantity  Int      @default(1)
+  userId    String
+  productId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("cart_items")
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  orderNumber   String      @unique
+  status        OrderStatus @default(PROCESSING)
+  totalAmount   Decimal     @db.Decimal(10, 2)
+  shippingCost  Decimal     @db.Decimal(10, 2) @default(0)
+  customerName  String
+  customerPhone String
+  shippingAddress Json
+  notes         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relations
+  userId        String?
+  user          User?       @relation(fields: [userId], references: [id])
+  orderItems    OrderItem[]
+  supportTickets SupportTicket[]
+  affiliateReferrals AffiliateReferral[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  quantity  Int
+  price     Decimal  @db.Decimal(10, 2)
+  orderId   String
+  productId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id])
+
+  @@map("order_items")
+}
+
+model SupportTicket {
+  id            String   @id @default(cuid())
+  subject       String
+  message       String
+  status        TicketStatus @default(OPEN)
+  priority      Priority @default(MEDIUM)
+  customerPhone String?
+  customerName  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  userId    String?
+  user      User?   @relation(fields: [userId], references: [id])
+  orderId   String?
+  order     Order?  @relation(fields: [orderId], references: [id])
+  messages  SupportMessage[]
+
+  @@map("support_tickets")
+}
+
+model SupportMessage {
+  id          String   @id @default(cuid())
+  message     String
+  isFromAdmin Boolean  @default(false)
+  attachments Json?    // Store file attachments as JSON
+  createdAt   DateTime @default(now())
+
+  // Relations
+  ticketId    String
+  ticket      SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  userId      String?
+  user        User?   @relation(fields: [userId], references: [id])
+
+  @@map("support_messages")
+}
+
+model OTP {
+  id        String   @id @default(cuid())
+  phone     String
+  code      String
+  expiresAt DateTime
+  isUsed    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("otps")
+}
+
+// POS System
+model POSConfig {
+  id                String   @id @default(cuid())
+  storeName         String
+  storeAddress      String?
+  storePhone        String?
+  storeEmail        String?
+  currency          String   @default("USD")
+  taxRate           Float    @default(0.0)
+  receiptHeader     String?
+  receiptFooter     String?
+  isActive          Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("pos_configs")
+}
+
+model POSSession {
+  id          String    @id @default(cuid())
+  cashierId   String
+  cashier     User      @relation(fields: [cashierId], references: [id])
+  startTime   DateTime  @default(now())
+  endTime     DateTime?
+  startingCash Float    @default(0.0)
+  endingCash   Float?
+  totalSales   Float    @default(0.0)
+  totalOrders  Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("pos_sessions")
+}
+
+// Marketing System
+model Coupon {
+  id          String    @id @default(cuid())
+  code        String    @unique
+  name        String
+  description String?
+  type        CouponType
+  value       Float
+  minOrderAmount Float?
+  maxDiscount Float?
+  usageLimit  Int?
+  usedCount   Int       @default(0)
+  isActive    Boolean   @default(true)
+  validFrom   DateTime
+  validUntil  DateTime
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("coupons")
+}
+
+model Newsletter {
+  id          String    @id @default(cuid())
+  subject     String
+  content     String
+  status      NewsletterStatus @default(DRAFT)
+  sentAt      DateTime?
+  recipientCount Int    @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("newsletters")
+}
+
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  isActive  Boolean  @default(true)
+  subscribedAt DateTime @default(now())
+  unsubscribedAt DateTime?
+
+  @@map("subscribers")
+}
+
+model Offer {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  type        OfferType
+  value       Float
+  minOrderAmount Float?
+  isActive    Boolean   @default(true)
+  validFrom   DateTime
+  validUntil  DateTime
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("offers")
+}
+
+// Blog System
+model BlogCategory {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  description String?
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  posts       BlogPost[]
+
+  @@map("blog_categories")
+}
+
+model BlogPost {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  content     String
+  excerpt     String?
+  featuredImage String?
+  status      BlogStatus @default(DRAFT)
+  publishedAt DateTime?
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id])
+  categoryId  String?
+  category    BlogCategory? @relation(fields: [categoryId], references: [id])
+  views       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("blog_posts")
+}
+
+// CMS Pages
+model Page {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String
+  seoTitle    String?
+  seoDescription String?
+  status      PageStatus @default(DRAFT)
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("pages")
+}
+
+// Key-Value Settings (for Appearance & System)
+model Setting {
+  id        String   @id @default(cuid())
+  category  String   // e.g., appearance, system, payments
+  key       String
+  value     String   // JSON stringified
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([category, key])
+  @@map("settings")
+}
+
+// File Uploads
+model FileUpload {
+  id          String    @id @default(cuid())
+  filename    String
+  originalName String
+  mimeType    String
+  size        Int
+  path        String
+  uploadedBy  String
+  uploadedByUser User   @relation(fields: [uploadedBy], references: [id])
+  createdAt   DateTime  @default(now())
+
+  @@map("file_uploads")
+}
+
+// Affiliate System
+model AffiliateConfig {
+  id                String   @id @default(cuid())
+  commissionRate    Float    @default(0.1)
+  minPayoutAmount   Float    @default(50.0)
+  cookieExpiryDays  Int      @default(30)
+  isActive          Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("affiliate_configs")
+}
+
+model AffiliateUser {
+  id            String    @id @default(cuid())
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id])
+  affiliateCode String    @unique
+  totalEarnings Float     @default(0.0)
+  paidEarnings  Float     @default(0.0)
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  referrals     AffiliateReferral[]
+
+  @@map("affiliate_users")
+}
+
+model AffiliateReferral {
+  id            String    @id @default(cuid())
+  affiliateId   String
+  affiliate     AffiliateUser @relation(fields: [affiliateId], references: [id])
+  orderId       String
+  order         Order     @relation(fields: [orderId], references: [id])
+  commission    Float
+  status        ReferralStatus @default(PENDING)
+  createdAt     DateTime  @default(now())
+  paidAt        DateTime?
+
+  @@map("affiliate_referrals")
+}
+
+// Enums
+enum Role {
+  CUSTOMER
+  CUSTOMER_SERVICE
+  WAREHOUSE
+  MARKETING
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum OrderStatus {
+  PROCESSING
+  CONFIRMED
+  EN_ROUTE
+  DELIVERED
+  CANCELLED
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  CLOSED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum CouponType {
+  PERCENTAGE
+  FIXED_AMOUNT
+  FREE_SHIPPING
+}
+
+enum NewsletterStatus {
+  DRAFT
+  SCHEDULED
+  SENT
+  FAILED
+}
+
+enum OfferType {
+  PERCENTAGE
+  FIXED_AMOUNT
+  BUY_X_GET_Y
+  FREE_SHIPPING
+}
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum PageStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum ReferralStatus {
+  PENDING
+  APPROVED
+  PAID
+  REJECTED
+}
+
+// Banner System
+model Banner {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  imageUrl    String?
+  ctaText     String?
+  ctaUrl      String?
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("banners")
+}
+
+// Footer Configuration
+model FooterSection {
+  id        String   @id @default(cuid())
+  title     String
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  links     FooterLink[]
+
+  @@map("footer_sections")
+}
+
+model FooterLink {
+  id        String   @id @default(cuid())
+  text      String
+  url       String
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  sectionId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  section   FooterSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@map("footer_links")
+}
+
+model SocialLink {
+  id        String   @id @default(cuid())
+  platform  String
+  url       String
+  icon      String
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("social_links")
+}

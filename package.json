@@ -1,0 +1,24 @@
+{
+  "name": "matchystore-cms",
+  "version": "1.0.0",
+  "description": "Full-Stack Socks Store CMS",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "cd server && npm run dev",
+    "client:dev": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "db:generate": "cd server && npx prisma generate",
+    "db:push": "cd server && npx prisma db push",
+    "db:studio": "cd server && npx prisma studio",
+    "db:seed": "cd server && node prisma/seed.js"
+  },
+  "keywords": ["socks", "cms", "ecommerce", "vue", "nodejs"],
+  "author": "MatchyStore Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
