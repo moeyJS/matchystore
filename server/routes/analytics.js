@@ -3,6 +3,7 @@ const { PrismaClient } = require('@prisma/client')
 const { authenticateToken, requireAdmin } = require('../middleware/auth')
 
 const router = express.Router()
+const prisma = new PrismaClient()
 
 
 // Sales Analytics
