@@ -89,8 +89,9 @@ const adminLimiter = rateLimit({
   trustProxy: true
 });
 
-app.use('/api/', limiter);
-app.use('/api/admin/', adminLimiter);
+// Temporarily disable rate limiting for debugging
+// app.use('/api/', limiter);
+// app.use('/api/admin/', adminLimiter);
 
 // Middleware
 app.use(compression());
